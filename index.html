@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Códigos em Javascript</title>
+  <style>
+  
+    body{
+        background-image: url('img/icarus.jpg');/*Imagem de fundo do corpo da página*/
+        background-position: center;/*Posição da imagem de fundo*/
+        background-repeat: no-repeat;/*Fazer com que a imagem de fundo não se repita*/
+        background-size: cover;/*Cobrir o fundo da tela com a imagem*/
+        background-attachment: fixed;/*Fazer o background ficar fixado*/
+    }
+    form{
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 1);/*Sombra do formulário*/
+
+        flex-direction: column;/*alinhamento da coluna do formulário1*/
+        width: 350px;/*Tamanho do formulário*/
+        justify-content: center;/*Atribuições ao centro*/
+        align-items: center;/*Atribuições ao centro*/
+        text-align: center;/*Atribuições ao centro em relação ao texto*/
+        margin: auto;/*Define a margem automatico*/
+        background: linear-gradient(90deg, #9efe89, #66a6ff);/*Cor de fundo do formulário dividida em duas cores com um angúlo de 90 graus*/
+        padding: 30px;/*Espaçamento de conteúdo*/
+        border-radius: 10px;/*borda arredondada*/
+            display: flex;/*Alinhamento do formulário*/        
+    }
+    label,input, select{
+        width: 100%;/*Tamanho total do label e o input*/
+        padding: 10px;/*Margem de espaçamento entre eles*/
+    }
+    button{
+        background-color: black;/*Background preto do botão*/
+        color: white;/*Cor branca do botão*/
+        width: 150PX;/*Tamanho de largura do botão*/
+        height: 50px;/*Tamanho de altura do botão*/
+        margin-top: 20px;/*Espaçamento de 20px para baixo*/
+        border-radius: 10px;/*Borda arredondada*/
+    }
+    button:hover{
+        background-color: white;/*Background branco do botão ao passar por cima*/
+        color: black;/*color do botão ao passar por cima*/
+        width: 150PX;/*Tamanho de largura do botão*/
+        height: 50px;/*Tamanho de altura do botão*/
+        margin-top: 20px;/*Espaçamento de 20px para baixo*/
+        border-radius: 10px;/*Borda arredondada*/
+    }
+
+  </style>
+  </head>
+  <body>
+    <div class="container">
+    <h1 style="text-align: center; color:black; text-shadow:white 3px 3px 3px; font-size: 40px;"><strong>Desafio Professor Vagner Javascript</strong></h1>
+    </div>
+    <form id="meuForm">
+        <input type="number" id="primeiroNumero1" placeholder="Digite aqui o primeiro número" required>
+        <div style="visibility: hidden;">Somente para ocupar um espaço no firefox por que o br não pega</div>
+        <select id="analyst" class="form-select mb-3">
+          <option value="somar">Somar</option>
+          <option value="subtrair">Subtrair</option>
+          <option value="multiplicacao">multiplicação</option>
+          <option value="divisao">Dividir</option>
+          <option value="restoDaDivisao">Resto da divisão</option>
+          <option value="incrementar">Número adicional no primeiro e segundo</option>
+          <option value="decrementar">Tirar número no primeiro e segundo</option>
+          <option value="comparar">Comparar se é igual</option>
+          <option value="verTipodeDado">Ver tipo de dado</option>
+          <option value="diferente">Ve se é diferente</option>
+          <option value="diferenteTipoDois">Verifica se os dois tipos são diferentes</option>
+          <option value="maiorQue">Verifica se o número1 é maior que o número2</option>
+          <option value="maenorQue">Verifica se o número1 é maenor que o número2</option>
+          <option value="ee">Comparar se o número 1 e 2 é igual a 100</option>
+          <option value="ouENao">verifica se os números estão dentro 50 até 100</option>
+
+        </select>
+                <div style="visibility: hidden;">Somente para ocupar um espaço no firefox por causa do br</div>
+
+        <input type="number" id="primeiroNumero2" placeholder="Digite aqui o segundo número" required>
+        <button type="submit">Calcular</button>
+      </form>
+      <p style="text-align: center; margin-top: 50px;"><img src="logo.png"></p>
+      <script>
+        const form = document.getElementById("meuForm");
+      
+        form.addEventListener("submit", function(event) {
+          event.preventDefault(); 
+          calcular();
+        });
+      
+        function calcular() {
+          let n1 = Number(document.getElementById("primeiroNumero1").value);
+          let n2 = Number(document.getElementById("primeiroNumero2").value);
+          let operacao = document.getElementById("analyst").value;
+          let resultado;
+      
+          switch (operacao) {
+            case "somar":
+              resultado = n1 + n2;
+              alert("A soma é: " + resultado);
+              break;
+            case "subtrair":
+              resultado = n1 - n2;
+              alert("A subtração é: " + resultado);
+              break;
+            case "multiplicacao":
+              resultado = n1 * n2;
+              alert("A multiplicação é: " + resultado);
+              break;
+            case "divisao":
+              if (n2 === 0) {
+                alert("Não é possível dividir por zero!");
+              } else {
+                resultado = n1 / n2;
+                alert("A divisão é: " + resultado);
+              }
+              break;
+              case "restoDaDivisao":
+              resultado = n1 % n2;
+              alert("O resto da divisão é: " + resultado);
+             break;
+             case "incrementar":
+               n1++;
+                n2++;
+              alert("número1 incrementado: " + n1 + ", número2 incrementado: " + n2);
+               break;
+              case "decrementar":
+              n1--;
+                n2--;
+              alert("número1 decrementado " + n1 + ", número2 decrementado: " + n2);
+              break;
+             case"comparar":
+             if (n1 == n2) {
+             alert("É igual");
+              } else {
+             alert("É diferente");
+              }
+              break;
+              case"verTipodeDado":
+              if(n1 === n2){
+                alert("É a mesmo tipo de dado")
+              }
+              else{
+                alert("Não é a mesmo tipo de dado")
+              }
+              break;
+             case"diferente":
+             if (n1!=n2){
+              alert ("É diferente")
+             }
+             else{
+              alert ("Não é diferente")
+             }
+             break;
+            case"diferenteTipoDois":
+            if(n1 !==n2 ){
+              alert("Os dois são do mesmo tipo lógico")
+            }
+            else{
+              alert("Você bugou o código que nem era para aparecer isso")
+            }
+            break;
+            case"maiorQue":
+            if(n1>n2){
+              alert("O número1 é maior que o número dois")
+            }
+            else{
+              alert("O numéro1 é menor que o número dois")
+            }
+            break;
+               case"maenorQue":
+            if(n1<n2){
+              alert("O número1 é menor que o número dois")
+            }
+            else{
+              alert("O numéro1 é mair que o número dois")
+            }
+            break;
+            case"ee":
+            if(n1 && n2 == 100){
+              alert("Número um e dois é igual a 100")
+            }
+            else{
+              alert("Números diferente")
+            }
+            break;
+             case "ouENao":
+           if (!(n1 < 50 || n1 > 100 || n2 < 50 || n2 > 100)) {
+            alert("Os números estão dentro de 50 até 100");
+             } else {
+             alert("Os números não estão dentro do limite");
+           }
+               break;
+
+            default:
+              alert("Operação inválida");
+          }
+        }
+      </script>
+      
+  </body>
+  </html>
